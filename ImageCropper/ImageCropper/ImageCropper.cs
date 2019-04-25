@@ -4,19 +4,15 @@ using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace Stormlion.ImageCropper
-{
-    public class ImageCropper
-    {
+namespace ImageCropper {
+    public class ImageCropper {
         public static ImageCropper Current { get; set; }
 
-        public ImageCropper()
-        {
+        public ImageCropper() {
             Current = this;
         }
 
-        public enum CropShapeType
-        {
+        public enum CropShapeType {
             Rectangle,
             Oval
         };
@@ -39,48 +35,40 @@ namespace Stormlion.ImageCropper
 
         public Action<string> Success { get; set; }
 
-        public Action Faiure { get; set; }
+        public Action Failure { get; set; }
 
-        public async void Show(Page page, string imageFile = null)
-        {
-            if(imageFile == null)
-            {
+        public async void Show(Page page, string imageFile = null) {
+            if (imageFile == null) {
                 await CrossMedia.Current.Initialize();
 
                 MediaFile file;
 
-                string action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, TakePhotoTitle, PhotoLibraryTitle);
-                if (action == TakePhotoTitle)
-                {
-                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
-                    {
+                var action = await page.DisplayActionSheet(SelectSourceTitle, CancelButtonTitle, null, TakePhotoTitle, PhotoLibraryTitle);
+                if (action == TakePhotoTitle) {
+                    if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported) {
                         await page.DisplayAlert("No Camera", ":( No camera available.", "OK");
-                        Faiure?.Invoke();
+                        Failure?.Invoke();
                         return;
                     }
 
-                     file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions());
+                    file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions());
                 }
-                else if(action == PhotoLibraryTitle)
-                {
-                    if(!CrossMedia.Current.IsPickPhotoSupported)
-                    {
+                else if (action == PhotoLibraryTitle) {
+                    if (!CrossMedia.Current.IsPickPhotoSupported) {
                         await page.DisplayAlert("Error", "This device is not supported to pick photo.", "OK");
-                        Faiure?.Invoke();
+                        Failure?.Invoke();
                         return;
                     }
 
                     file = await CrossMedia.Current.PickPhotoAsync();
                 }
-                else
-                {
-                    Faiure?.Invoke();
+                else {
+                    Failure?.Invoke();
                     return;
                 }
 
-                if (file == null)
-                {
-                    Faiure?.Invoke();
+                if (file == null) {
+                    Failure?.Invoke();
                     return;
                 }
 
@@ -88,7 +76,7 @@ namespace Stormlion.ImageCropper
             }
 
             // small delay
-            await Task.Delay(TimeSpan.FromMilliseconds(100));
+            //await Task.Delay(TimeSpan.FromMilliseconds(100));
             DependencyService.Get<IImageCropperWrapper>().ShowFromFile(this, imageFile);
         }
     }

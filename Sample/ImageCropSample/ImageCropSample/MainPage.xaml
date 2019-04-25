@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ImageCropSample"
+             x:Class="ImageCropSample.MainPage">
+
+    <StackLayout Padding="20,40,20,20" Orientation="Vertical">
+        <Button Command="{Binding TakePhotoCommand}" Text="Crop an Image" />
+        
+        <Image Source="{Binding ImageSource}"
+               HorizontalOptions="FillAndExpand"
+               VerticalOptions="FillAndExpand" />
+        <ActivityIndicator IsRunning="True"
+                           IsEnabled="{Binding IsBusy}"
+                           WidthRequest="30"
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand" 
+                           IsVisible="{Binding IsBusy}"/>
+
+    </StackLayout>
+
+</ContentPage>

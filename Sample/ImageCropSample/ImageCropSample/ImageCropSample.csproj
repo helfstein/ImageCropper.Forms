@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>ImageCropper</AssemblyName>
-    <RootNamespace>ImageCropper</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,4 +14,7 @@
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.344457" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\ImageCropper\ImageCropper\ImageCropper.csproj" />
+  </ItemGroup>
 </Project>
