@@ -3,6 +3,7 @@ using Foundation;
 using System;
 using System.Diagnostics;
 using UIKit;
+using BindTOCropViewController;
 
 namespace ImageCropper.iOS {
     public class ImageCropperImplementation : IImageCropperWrapper {

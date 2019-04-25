@@ -22,6 +22,7 @@ namespace ImageCropSample.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            ImageCropper.iOS.Platform.Init();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
 
