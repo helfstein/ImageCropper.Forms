@@ -4,19 +4,24 @@
              xmlns:local="clr-namespace:ImageCropSample"
              x:Class="ImageCropSample.MainPage">
 
-    <StackLayout Padding="20,40,20,20" Orientation="Vertical">
-        <Button Command="{Binding TakePhotoCommand}" Text="Crop an Image" />
+    <StackLayout Padding="20,40,20,40" Orientation="Vertical"
+                 VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+        
         
         <Image Source="{Binding ImageSource}"
-               HorizontalOptions="FillAndExpand"
-               VerticalOptions="FillAndExpand" />
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="CenterAndExpand" />
         <ActivityIndicator IsRunning="True"
                            IsEnabled="{Binding IsBusy}"
                            WidthRequest="30"
                            HorizontalOptions="CenterAndExpand"
                            VerticalOptions="CenterAndExpand" 
                            IsVisible="{Binding IsBusy}"/>
-
+        <Button Command="{Binding TakePhotoCommand}" 
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                Text="Crop an Image" />
     </StackLayout>
 
 </ContentPage>
