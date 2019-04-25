@@ -1,7 +1,7 @@
 ﻿using System;
 using ObjCRuntime;
 
-namespace Bind_TOCropViewController {
+namespace BindTOCropViewController {
     [Native]
     public enum TOCropViewCroppingStyle : ulong {
         Default,

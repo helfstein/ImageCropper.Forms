@@ -2,10 +2,10 @@
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
-using Bind_TOCropViewController;
+using BindTOCropViewController;
 using UIKit;
 
-namespace Bind_TOCropViewController {
+namespace BindTOCropViewController {
     // @interface TOActivityCroppedImageProvider : UIActivityItemProvider
     [BaseType(typeof(UIActivityItemProvider))]
     interface TOActivityCroppedImageProvider {
