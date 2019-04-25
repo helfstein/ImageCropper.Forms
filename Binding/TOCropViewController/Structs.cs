@@ -1,18 +1,15 @@
 ﻿using System;
 using ObjCRuntime;
 
-namespace Bind_TOCropViewController
-{
+namespace Bind_TOCropViewController {
     [Native]
-    public enum TOCropViewCroppingStyle : ulong
-    {
+    public enum TOCropViewCroppingStyle : ulong {
         Default,
         Circular
     }
 
     [Native]
-    public enum TOCropViewControllerAspectRatioPreset : ulong
-    {
+    public enum TOCropViewControllerAspectRatioPreset : ulong {
         Original,
         Square,
         TOCropViewControllerAspectRatioPreset3x2,
@@ -25,8 +22,7 @@ namespace Bind_TOCropViewController
     }
 
     [Native]
-    public enum TOCropViewControllerToolbarPosition : ulong
-    {
+    public enum TOCropViewControllerToolbarPosition : ulong {
         Bottom,
         Top
     }
